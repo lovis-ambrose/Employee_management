@@ -6,6 +6,11 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import { EmpAddEditComponent } from './emp-add-edit/emp-add-edit.component';
+import { FormsModule } from '@angular/forms';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +20,12 @@ import { EmpAddEditComponent } from './emp-add-edit/emp-add-edit.component';
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    FormsModule,
+    MatNativeDateModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

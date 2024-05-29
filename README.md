@@ -1,4 +1,5 @@
 # Crud
+This project uses JsonServer Rest API [JsonServer](https://www.npmjs.com/package/json-server)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.1.
 
