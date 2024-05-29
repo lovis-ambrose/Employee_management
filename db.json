@@ -1,0 +1,76 @@
+{
+  "employees": [
+    {
+      "id": 1,
+      "firstName": "Mutungi",
+      "lastName": "Ambrozio",
+      "email": "mutungi@gmail.com",
+      "dob": "1999-07-29T21:00:00.000Z",
+      "gender": "",
+      "education": "Masters",
+      "company": "Google",
+      "experience": 6,
+      "salary": 250000
+    },
+    {
+      "id": 2,
+      "firstName": "Lovis",
+      "lastName": "Ambrose",
+      "email": "lovis2gmail.com",
+      "dob": "2000-07-29T21:00:00.000Z",
+      "gender": "male",
+      "education": "Diploma",
+      "company": "Airbnb",
+      "experience": 5,
+      "salary": 220000
+    },
+    {
+      "id": 3,
+      "firstName": "Muhanguzi",
+      "lastName": "Arnold",
+      "email": "arnold@gmail.com",
+      "dob": "2022-03-01T21:00:00.000Z",
+      "gender": "male",
+      "education": "UCE",
+      "company": "SchoolPay",
+      "experience": 3,
+      "salary": 50000
+    },
+    {
+      "id": 4,
+      "firstName": "Katia",
+      "lastName": "Ainemukama",
+      "email": "katia",
+      "dob": "2002-07-09T21:00:00.000Z",
+      "gender": "",
+      "education": "Diploma",
+      "company": "Service Cops",
+      "experience": 2,
+      "salary": 350000
+    },
+    {
+      "id": 5,
+      "firstName": "Mugisha",
+      "lastName": "Rakib",
+      "email": "rakib2@gmail.com",
+      "dob": "2000-02-08T21:00:00.000Z",
+      "gender": "",
+      "education": "Undergraduate",
+      "company": "Kigozi Foods",
+      "experience": 2,
+      "salary": 40000
+    },
+    {
+      "id": 6,
+      "firstName": "Mbabazi",
+      "lastName": "Jovita",
+      "email": "mbabazi@gmail.com",
+      "dob": "1966-07-12T21:00:00.000Z",
+      "gender": "female",
+      "education": "UCE",
+      "company": "Peasant",
+      "experience": 40,
+      "salary": 1000000
+    }
+  ]
+}
