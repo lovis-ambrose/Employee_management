@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -17,6 +17,8 @@ import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatSort, MatSortModule} from '@angular/material/sort';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import { CommonModule } from '@angular/common';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { CoreService } from './core/core.service';
 
 
 @Component({
@@ -37,7 +39,8 @@ import { CommonModule } from '@angular/common';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    CommonModule
+    CommonModule,
+    MatSnackBarModule
     
   ],
   templateUrl: './app.component.html',
@@ -55,7 +58,8 @@ export class AppComponent implements OnInit{
 
   constructor(
     private _dialog: MatDialog,
-    private _employeeService: EmployeeService
+    private _employeeService: EmployeeService,
+    private _coreService: CoreService
   ){}
 
 
@@ -63,8 +67,17 @@ export class AppComponent implements OnInit{
     this.getEmployeeList();
   }
 
+  // we want to refresh the list once emp add but we're using diff components.
+  // so we store refrence and then listen, and the refresh list if true
   addEditEmployee(){
-    this._dialog.open(EmpAddEditComponent)
+    const dialogRef = this._dialog.open(EmpAddEditComponent);
+    dialogRef.afterClosed().subscribe({
+      next: (val) => {
+        if(val){
+          this.getEmployeeList();
+        }
+      }
+    });
   }
 
   getEmployeeList(){
@@ -80,13 +93,14 @@ export class AppComponent implements OnInit{
     });
   }
 
-  deleteEmp(id: number) {
+  deleteEmp(id: string) {
     this._employeeService.deleteEmployee(id).subscribe({
-      next: (res) =>{
-        alert("employee deleted!")
+      next: (res) => {
+        this._coreService.openSnackBar("Employee deleted!", "Done");
+        this.getEmployeeList();
       },
       error: (err) => {
-        console.log(err)
+        console.log(err);
       }
     });
   }
@@ -100,8 +114,17 @@ export class AppComponent implements OnInit{
     }
   }
 
-  // ngAfterViewInit() {
-  //   this.dataSource.paginator = this.paginator;
-  //   this.dataSource.sort = this.sort;
-  // }
+  editEmployee(data: any){
+    const dialogRef = this._dialog.open(EmpAddEditComponent, {
+      data: data
+    });
+    // store reference
+    dialogRef.afterClosed().subscribe({
+      next: (val) => {
+        if(val){
+          this.getEmployeeList();
+        }
+      }
+    });
+  }
 }

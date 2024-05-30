@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import {MatDialogModule} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
@@ -10,8 +10,8 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EmployeeService } from '../services/employee.service';
-import { DialogRef } from '@angular/cdk/dialog';
 import { HttpClientModule } from '@angular/common/http';
+import { CoreService } from '../core/core.service';
 
 
 @Component({
@@ -35,14 +35,16 @@ import { HttpClientModule } from '@angular/common/http';
   templateUrl: './emp-add-edit.component.html',
   styleUrl: './emp-add-edit.component.scss'
 })
-export class EmpAddEditComponent {
+export class EmpAddEditComponent implements OnInit{
 
   empForm: FormGroup;
 
   constructor(
     private _fb: FormBuilder,
     private _empService: EmployeeService,
-    private _dialogRef: DialogRef<EmpAddEditComponent>
+    private _dialogRef: MatDialogRef<EmpAddEditComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,  //use injection token to fetch row data for edit, make it public
+    private _coreService: CoreService
   ){
     this.empForm = this._fb.group({
       firstName: '',
@@ -55,6 +57,11 @@ export class EmpAddEditComponent {
       experience: '',
       salary: ''
     })
+  }
+
+  ngOnInit(): void {
+    //open form with data
+    this.empForm.patchValue(this.data);
   }
 
 
@@ -71,14 +78,38 @@ export class EmpAddEditComponent {
   ];
 
   onFormSubmit(){
-    this._empService.addEmployee(this.empForm.value).subscribe(
-    response => {
-      alert("employee added");
-      this._dialogRef.close();
-    },
-    error =>{
-      alert("error occured");
+    // submit basing on if form has data or not
+    if(this.empForm.valid){
+      if(this.data){
+        // update
+        this._empService.updateEmployee(this.data.id, this.empForm.value).subscribe(
+          {
+            next: (response) => {
+              response = this._coreService.openSnackBar("employee updated!", "Done");
+              this._dialogRef.close(true); //pass true here
+            },
+            error: (err) =>{
+              // alert("error occured");
+              err = this._coreService.openSnackBar("employee updated!", "Done")
+            }
+          }
+        );
+      }
+      else{
+        // save
+        this._empService.addEmployee(this.empForm.value).subscribe(
+          {
+            next: (response) => {
+              response = this._coreService.openSnackBar("an error occured!", "Done");
+              this._dialogRef.close(true); //pass true here
+            },
+            error: (err) =>{
+              // alert("error occured");
+              err = this._coreService.openSnackBar("an error occured!", "Done")
+            }
+          }
+        );
+      }
     }
-  );
   }
 }

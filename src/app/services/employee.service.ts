@@ -15,19 +15,23 @@ export class EmployeeService {
   addEmployee(data: any): Observable<any> {
     return this.getEmployees().pipe(
       map(employees => {
-        const maxId = employees.reduce((max: number, employee: any) => Math.max(max, employee.id), 0);
-        data.id = maxId + 1;
+        const maxId = employees.reduce((max: number, employee: any) => Math.max(max, parseInt(employee.id, 10)), 0);
+        data.id = (maxId + 1).toString();
         return data;
       }),
       switchMap(newEmployee => this._http.post(this.api, newEmployee))
     );
   }
 
+  updateEmployee(id: string, data: any): Observable<any> {
+    return this._http.put(`${this.api}/${id}`, data);
+  }
+
   getEmployees(): Observable<any> {
     return this._http.get(this.api);
   }
 
-  deleteEmployee(id: number): Observable<any> {
-    return this._http.delete(`this.api/${id}`);
+  deleteEmployee(id: string): Observable<any> {
+    return this._http.delete(`${this.api}/${id}`);
   }
 }

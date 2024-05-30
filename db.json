@@ -1,76 +1,64 @@
 {
   "employees": [
     {
-      "id": 1,
+      "id": "1",
       "firstName": "Mutungi",
       "lastName": "Ambrozio",
       "email": "mutungi@gmail.com",
       "dob": "1999-07-29T21:00:00.000Z",
-      "gender": "",
+      "gender": "male",
       "education": "Masters",
       "company": "Google",
-      "experience": 6,
-      "salary": 250000
+      "experience": 5,
+      "salary": 260000
     },
     {
-      "id": 2,
+      "id": "2",
       "firstName": "Lovis",
       "lastName": "Ambrose",
-      "email": "lovis2gmail.com",
-      "dob": "2000-07-29T21:00:00.000Z",
+      "email": "lovis@gmail.com",
+      "dob": "1999-06-16T21:00:00.000Z",
       "gender": "male",
-      "education": "Diploma",
-      "company": "Airbnb",
+      "education": "Graduate",
+      "company": "Microsoft",
       "experience": 5,
       "salary": 220000
     },
     {
-      "id": 3,
+      "id": "3",
       "firstName": "Muhanguzi",
       "lastName": "Arnold",
       "email": "arnold@gmail.com",
-      "dob": "2022-03-01T21:00:00.000Z",
+      "dob": "1999-07-22T21:00:00.000Z",
       "gender": "male",
-      "education": "UCE",
-      "company": "SchoolPay",
-      "experience": 3,
-      "salary": 50000
-    },
-    {
-      "id": 4,
-      "firstName": "Katia",
-      "lastName": "Ainemukama",
-      "email": "katia",
-      "dob": "2002-07-09T21:00:00.000Z",
-      "gender": "",
       "education": "Diploma",
-      "company": "Service Cops",
-      "experience": 2,
-      "salary": 350000
+      "company": "Facebook",
+      "experience": 3,
+      "salary": 23000
     },
     {
-      "id": 5,
-      "firstName": "Mugisha",
-      "lastName": "Rakib",
-      "email": "rakib2@gmail.com",
-      "dob": "2000-02-08T21:00:00.000Z",
-      "gender": "",
-      "education": "Undergraduate",
-      "company": "Kigozi Foods",
-      "experience": 2,
-      "salary": 40000
+      "firstName": "Mukama",
+      "lastName": "Joseph",
+      "email": "mukama@gmail.com",
+      "dob": "1993-03-10T21:00:00.000Z",
+      "gender": "other",
+      "education": "Masters",
+      "company": "big company",
+      "experience": 4,
+      "salary": 70000,
+      "id": "4"
     },
     {
-      "id": 6,
-      "firstName": "Mbabazi",
-      "lastName": "Jovita",
-      "email": "mbabazi@gmail.com",
-      "dob": "1966-07-12T21:00:00.000Z",
-      "gender": "female",
-      "education": "UCE",
-      "company": "Peasant",
-      "experience": 40,
-      "salary": 1000000
+      "firstName": "Muhozi",
+      "lastName": "James",
+      "email": "james@gmail.com",
+      "dob": "1992-06-10T21:00:00.000Z",
+      "gender": "male",
+      "education": "Diploma",
+      "company": "Small Company",
+      "experience": 4,
+      "salary": 322200,
+      "id": "5"
     }
   ]
 }
