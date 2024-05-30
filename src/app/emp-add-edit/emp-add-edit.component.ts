@@ -100,7 +100,7 @@ export class EmpAddEditComponent implements OnInit{
         this._empService.addEmployee(this.empForm.value).subscribe(
           {
             next: (response) => {
-              response = this._coreService.openSnackBar("an error occured!", "Done");
+              response = this._coreService.openSnackBar("employee added!", "Done");
               this._dialogRef.close(true); //pass true here
             },
             error: (err) =>{
