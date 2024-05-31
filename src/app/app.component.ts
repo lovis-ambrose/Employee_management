@@ -18,8 +18,10 @@ import {MatSort, MatSortModule} from '@angular/material/sort';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import { CommonModule } from '@angular/common';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import { CoreService } from './core/core.service';
-
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
+import { TooltipModule } from 'primeng/tooltip';
 
 @Component({
   selector: 'app-root',
@@ -40,9 +42,13 @@ import { CoreService } from './core/core.service';
     MatPaginatorModule,
     MatSortModule,
     CommonModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    ConfirmDialogModule,
+    ToastModule,
+    TooltipModule
     
   ],
+  providers: [ConfirmationService, MessageService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -59,7 +65,8 @@ export class AppComponent implements OnInit{
   constructor(
     private _dialog: MatDialog,
     private _employeeService: EmployeeService,
-    private _coreService: CoreService
+    private _confimService: ConfirmationService,
+    private _msgService: MessageService
   ){}
 
 
@@ -94,14 +101,27 @@ export class AppComponent implements OnInit{
   }
 
   deleteEmp(id: string) {
-    this._employeeService.deleteEmployee(id).subscribe({
-      next: (res) => {
-        // alert("Employee deleted!");
-        this._coreService.openSnackBar("Employee deleted!", "Done");
-        this.getEmployeeList();
+    this._confimService.confirm({
+      message: 'Do you want to delete this record?',
+      header: 'Delete Confirmation',
+      icon: 'pi pi-info-circle',
+      acceptButtonStyleClass: "p-button-danger p-button-text",
+      rejectButtonStyleClass: "p-button-text p-button-text",
+      acceptIcon: "none",
+      rejectIcon: "none",
+      accept: () => {
+        this._employeeService.deleteEmployee(id).subscribe({
+          next: (res) => {
+            this._msgService.add({ severity: 'info', summary: 'Confirmed', detail: 'Record deleted' });
+            this.getEmployeeList();
+          },
+          error: (err) => {
+            console.log(err);
+          }
+        });
       },
-      error: (err) => {
-        console.log(err);
+      reject: () => {
+        this._msgService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected' });
       }
     });
   }
@@ -128,4 +148,5 @@ export class AppComponent implements OnInit{
       }
     });
   }
+
 }

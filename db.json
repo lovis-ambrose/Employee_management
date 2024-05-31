@@ -1,7 +1,6 @@
 {
   "employees": [
     {
-      "id": "1",
       "firstName": "Mutungi",
       "lastName": "Ambrozio",
       "email": "mutungi@gmail.com",
@@ -10,22 +9,10 @@
       "education": "Masters",
       "company": "Google",
       "experience": 5,
-      "salary": 260000
+      "salary": 260000,
+      "id": "1"
     },
     {
-      "id": "2",
-      "firstName": "Lovis",
-      "lastName": "Ambrose",
-      "email": "lovis@gmail.com",
-      "dob": "1999-06-16T21:00:00.000Z",
-      "gender": "male",
-      "education": "Graduate",
-      "company": "Microsoft",
-      "experience": 5,
-      "salary": 220000
-    },
-    {
-      "id": "3",
       "firstName": "Muhanguzi",
       "lastName": "Arnold",
       "email": "arnold@gmail.com",
@@ -34,7 +21,8 @@
       "education": "Diploma",
       "company": "Facebook",
       "experience": 3,
-      "salary": 23000
+      "salary": 23000,
+      "id": "3"
     },
     {
       "firstName": "Mukama",
@@ -49,7 +37,7 @@
       "id": "4"
     },
     {
-      "firstName": "Muhozi",
+      "firstName": "Muhoozi",
       "lastName": "James",
       "email": "james@gmail.com",
       "dob": "1992-06-10T21:00:00.000Z",
@@ -61,28 +49,52 @@
       "id": "5"
     },
     {
-      "id": "6",
-      "firstName": "xx",
-      "lastName": "ccc",
-      "email": "vvv",
-      "dob": "2024-05-29T21:00:00.000Z",
-      "gender": "male",
-      "education": "Undergraduate",
-      "company": "dd",
-      "experience": 2,
-      "salary": 333333
-    },
-    {
-      "id": "7",
-      "firstName": "",
-      "lastName": "",
+      "firstName": "sssssa",
+      "lastName": "ffff",
       "email": "",
-      "dob": "",
+      "dob": "2024-05-22T21:00:00.000Z",
       "gender": "",
       "education": "",
       "company": "",
       "experience": "",
-      "salary": ""
+      "salary": "",
+      "id": "6"
+    },
+    {
+      "firstName": "John",
+      "lastName": "mammsm",
+      "email": "kksskks",
+      "dob": "2024-05-21T21:00:00.000Z",
+      "gender": "female",
+      "education": "Undergraduate",
+      "company": "",
+      "experience": "",
+      "salary": "",
+      "id": "7"
+    },
+    {
+      "firstName": "John",
+      "lastName": "Allen",
+      "email": "allen@gmail.com",
+      "dob": "2024-05-14T21:00:00.000Z",
+      "gender": "female",
+      "education": "Undergraduate",
+      "company": "Big company",
+      "experience": 5,
+      "salary": 70000,
+      "id": "9"
+    },
+    {
+      "id": "11",
+      "firstName": "xx",
+      "lastName": "xx",
+      "email": "xx@s",
+      "dob": "2024-05-30T21:00:00.000Z",
+      "gender": "male",
+      "education": "Diploma",
+      "company": "x",
+      "experience": 2,
+      "salary": 3
     }
   ]
 }
