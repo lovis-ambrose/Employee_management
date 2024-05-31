@@ -62,10 +62,12 @@ export class EmpAddEditComponent implements OnInit{
     private _msgService: MessageService
   ){
     // set min and max date
-    const currentYear = new Date().getFullYear();
-    this.minDate = new Date(1965, 0, 1);
-    // calculated based on the current date minus 18 years.
-    this.maxDate = new Date(currentYear - 18, 0, 1);
+    const currentDate = new Date();
+    // Setting the minDate to 50 years ago from today
+    this.minDate = new Date(currentDate.getFullYear() - 50, currentDate.getMonth(), currentDate.getDate());
+
+    // Setting the maxDate to 18 years ago from today
+    this.maxDate = new Date(currentDate.getFullYear() - 18, currentDate.getMonth(), currentDate.getDate());
 
     // form validator
     this.empForm = this._fb.group({
