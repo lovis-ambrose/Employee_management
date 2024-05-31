@@ -49,6 +49,8 @@ import { Observable, map, startWith } from 'rxjs';
 export class EmpAddEditComponent implements OnInit{
 
   empForm: FormGroup;
+  minDate!: Date;
+  maxDate!: Date;
   filteredEducationOptions!: Observable<string[]>;
   
   constructor(
@@ -59,6 +61,13 @@ export class EmpAddEditComponent implements OnInit{
     private _confirmService: ConfirmationService,
     private _msgService: MessageService
   ){
+    // set min and max date
+    const currentYear = new Date().getFullYear();
+    this.minDate = new Date(1965, 0, 1);
+    // calculated based on the current date minus 18 years.
+    this.maxDate = new Date(currentYear - 18, 0, 1);
+
+    // form validator
     this.empForm = this._fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],

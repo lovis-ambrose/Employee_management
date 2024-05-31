@@ -32,7 +32,7 @@
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label for="dob">Date of Birth</mat-label>
-                <input matInput [matDatepicker]="picker" formControlName="dob">
+                <input matInput [matDatepicker]="picker" [min]="minDate" [max]="maxDate" formControlName="dob">
                 <mat-hint>MM/DD/YYYY</mat-hint>
                 <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
